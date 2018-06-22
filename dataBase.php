@@ -24,7 +24,7 @@
                         if($pd == $row['password'])
                         {
                             $err = false;
-                            header('Location: Student Plateform.php');
+                            header('Location: studentInfo/Student Plateform.php');
                             exit;
                     
                         }
