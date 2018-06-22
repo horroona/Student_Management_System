@@ -5,7 +5,9 @@
 
         if($con->connect_error){
             die("connection failed " .$con->connect_error);
-        }else{
+        }
+        else{
+                $err = true;
                 $sql = 'select *from user';
                 $result = $con->query($sql);
 
@@ -21,13 +23,20 @@
                     
                         if($pd == $row['password'])
                         {
-                    
-                            echo("Login succeeded");
+                            $err = false;
+                            header('Location: Student Plateform.php');
+                            exit;
                     
                         }
                     
                     }
                 
+                }
+
+                if($err == true){
+
+                    echo("<h3 style ='text-align: center;'> <font color  = 'red' > Login Failed </font> </h3>");
+
                 }
             
             }
