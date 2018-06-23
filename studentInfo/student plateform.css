@@ -7,8 +7,7 @@ body{
         #mainbar {
                 background: rgb(98, 97, 170);
                 border: 2px solid rebeccapurple;
-                height: 20px;
-                padding: 10px;
+                height: 33px;
                 padding-left: 20px;
 
         }
@@ -22,12 +21,13 @@ body{
             text-decoration: none;
             font-size: 17px;
             border: 1px;
-            padding-left: 20px;
+            padding: 5px 13px;
             font-size: 17px;
         }
 
         #mainbar a:hover{
-            background-color: gray;
+            background-color: rgb(3, 3, 3);
+            color: yellowgreen;
         }
 
         #imgDiv{
@@ -38,6 +38,10 @@ body{
         #footer{
             text-decoration: none;
             padding-left: 25%;
-            position: absolute;
+            position: fixed;
             text-align: center;
+        }
+        #fDiv{
+            text-align: center;
+            padding-bottom: 10px;
         }

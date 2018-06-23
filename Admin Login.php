@@ -23,11 +23,6 @@
 
 	include 'dataBase.php';
 	
-	if(isset($_POST['submit'])){
-		
-
-			}
-			
 			$usname_error = $pwd_error = '';
 			$usname = $pwd = '';
 

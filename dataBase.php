@@ -1,17 +1,25 @@
 <?php
+    
     function contact($servername, $username, $password, $dbname, $usname, $pwd){
 
         $con = new mysqli($servername, $username, $password, $dbname);
 
         if($con->connect_error){
+    
             die("connection failed " .$con->connect_error);
+    
         }
+    
         else{
-                $err = true;
-                $sql = 'select *from user';
-                $result = $con->query($sql);
+    
+            $err = true;
+    
+            $sql = 'select *from user';
+    
+            $result = $con->query($sql);
 
-                while($row = $result->fetch_assoc()){
+
+            while($row = $result->fetch_assoc()){
 
                     $nam = $row['username'];
                     
