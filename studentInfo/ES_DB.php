@@ -80,10 +80,17 @@
                 //"FirstName: $row['FirstName']", "<br>LastName: $row['LastName']", "<br>Gender:  $row['Gender']", "<br>Email: $row['Email']"
             
                 while( $row = $result->fetch_assoc() ){
+                    
+                    session_start();
+                    
+                    $_SESSION['fname'] = $row['FirstName'];
+                    $_SESSION['lname'] = $row['LastName'];
+                    $_SESSION['gender'] = $row['Gender'];
+                    $_SESSION['email'] = $row['Email'];
 
-                    //header('Location: Report.php');
-                    showData($row['FirstName'], $row['LastName'], $row['Gender'], $row['Email']);            
-                    //exit;
+                    header('Location: Report.php');
+                    //showData($row['FirstName'], $row['LastName'], $row['Gender'], $row['Email']);            
+                    exit;
                 }
             }
             else

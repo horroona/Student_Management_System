@@ -14,22 +14,42 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
     <script src="main.js"></script>
+    
+    <style>
+            #rpDiv{
+                color: green;
+                text-align: center;
+            }
 
+    </style>
 </head>
 
 <body>
     
     <div id ='rpDiv'>
 
-        <?php
+    </div>
 
+    
+    <?php
+                session_start();
+
+              /*$Fname = $_SESSION["fname"];
+                $lname = $_SESSION['lname'];
+                $gender = $_SESSION['gender'];
+                $email = $_SESSION['email'];
+                */
+
+                showData($_SESSION["fname"], $_SESSION['lname'], $_SESSION['gender'], $_SESSION['email']);
+
+                session_destroy();
                 function showData($Fname, $lname, $gender, $email)
                 {
-                    echo "First Name" .$Fname . " LastName " . $lname . " Gender " . $gender . " Email " .$email;
+                    echo "<script> document.getElementById('rpDiv').innerHTML = 'First Name:   $Fname <br>LastName:  $lname <br>Gender:  $gender <br>Email:  $email'; </script>";
                 }
-        
+                
         ?>
-    </div>
+
 </body>
 
 </html>
