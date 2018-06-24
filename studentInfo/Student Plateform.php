@@ -21,7 +21,7 @@
         
              <a href ="Enroll_Student.php"> Student Enroll </a>
 
-             <a href =""> Student Report </a>
+             <a href ="studentReport.php"> Student Report </a>
             
             <a href ="">  Student Detail </a>         
    

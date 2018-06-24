@@ -1,11 +1,14 @@
 <?php
 
+
+
     function connectWithDB($fname, $lname, $address, $email, $gender, $phoneNo){
 
         $server = "localhost";
         $database = "student";
         $username = "root";
         $password = "";
+    
 
         $con = mysqli_connect($server, $username, $password, $database);
 
@@ -54,6 +57,41 @@
             }
        
         }
+    }
+
+    function showReport($email)
+    {
+        include("Report.php");
+
+        $server = "localhost";
+        $database = "student";
+        $username = "root";
+        $password = "";
+    
+        $con = mysqli_connect($server, $username, $password, $database);
+
+        $sql = "SELECT * FROM `studentinfo` WHERE Email = '$email'";
+
+        $result = $con->query($sql);
+
+        
+            if( ( mysqli_num_rows($result) ) > 0 )
+            {
+                //"FirstName: $row['FirstName']", "<br>LastName: $row['LastName']", "<br>Gender:  $row['Gender']", "<br>Email: $row['Email']"
+            
+                while( $row = $result->fetch_assoc() ){
+
+                    //header('Location: Report.php');
+                    showData($row['FirstName'], $row['LastName'], $row['Gender'], $row['Email']);            
+                    //exit;
+                }
+            }
+            else
+            {
+                
+                echo "<h3  style ='text-align: center'> <font color ='red'> Email not exists </font></h3>";
+            }
+
     }
 
 ?>
