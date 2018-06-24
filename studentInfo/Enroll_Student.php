@@ -75,6 +75,8 @@ $fnamerror = $lnamerror = $addErros = $phoneNoError = $genderror = $emailerror =
 
 $fname = $lname = $address = $phoneNo = $mail = $gender ='';
 
+if(isset($_POST['submit']))
+{
 
     if($_SERVER['REQUEST_METHOD']=="POST"){
 
@@ -174,8 +176,13 @@ $fname = $lname = $address = $phoneNo = $mail = $gender ='';
             connectWithDB($fname, $lname, $address, $mail, $gender, $phoneNo);
 
         }
+        else{
+
+            echo "<script> alert('Please Enter values'); </script>";
+        }
 
     
+    }
 }
 
 ?>

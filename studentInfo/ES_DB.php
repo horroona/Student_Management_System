@@ -2,7 +2,7 @@
 
     function connectWithDB($fname, $lname, $address, $email, $gender, $phoneNo){
 
-        $server = "localhost";
+        $server = "127.0.0.1";
         $database = "student";
         $username = "root";
         $password = "";
@@ -15,21 +15,44 @@
         }
 
         else{
-
+            
+            $insert ='';
             $bln = true;
             $sql = "SELECT * FROM studentinfo";
+            $insert = "INSERT INTO `studentinfo`(`FirstName`, `LastName`, `Address`, `Email`, `Gender`, `PhoneNumber`) VALUES ('$fname','$lname','$address','$email','$gender','$phoneNo')";
             $result = $con->query($sql);
-            while($row = $result->fetch_assoc()){}
+            
+            while($row = $result->fetch_assoc())
             {
-
-                if($row['Email'] != $email){
+               
+                if($row['Email'] === $email){
      
-                    $in = "INSERT INTO stundentinfo('FirstName', 'LastName', 'Address', 'Email, 'phoneNo') Values('$fname', '$lname', '$address', '$email', '$phoneNo')";
-                    echo "Record added";
+                    $bln = false;
                 }
+                
             }
 
-            echo "connection established";
+            if($bln===true){
+            
+                if($con->query($insert) ===true)
+                {
+
+                echo "<script> alert('Data added'); </script>";
+                
+                }
+
+                else{
+                    
+                    echo "<script> alert('could not be added'); </script>";
+                }
+            }  
+
+            else{
+
+                echo "<script> alert('Data already exist'); </script>";
+
+            }
+       
         }
     }
 
