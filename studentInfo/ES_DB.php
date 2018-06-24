@@ -2,7 +2,7 @@
 
     function connectWithDB($fname, $lname, $address, $email, $gender, $phoneNo){
 
-        $server = "127.0.0.1";
+        $server = "localhost";
         $database = "student";
         $username = "root";
         $password = "";
