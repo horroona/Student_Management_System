@@ -9,7 +9,7 @@ body{
                 border: 2px solid rebeccapurple;
                 height: 33px;
                 padding-left: 20px;
-
+                position: relative;
         }
 
         #mainbar a{
@@ -41,7 +41,36 @@ body{
             position: fixed;
             text-align: center;
         }
+        
         #fDiv{
+        
             text-align: center;
             padding-bottom: 10px;
+        }
+
+        #subDiv{
+
+            display: none;
+            list-style: none;
+            position: fixed;
+            padding-top: 5px;
+            margin-left: -60px;
+            margin-top: -0.5px;            
+        }
+
+        #subDiv a{
+            margin: 0 0 3px 0;
+            padding: 5px;
+            border: 1px solid blue;
+        }
+        
+        #mainbar a:hover > #subDiv{
+
+            display: block;
+            color: black;
+
+        }
+
+        #mainbar a li:hover{
+            background: yellow;
         }

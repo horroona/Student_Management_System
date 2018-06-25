@@ -11,21 +11,27 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="student plateform.css" />
     
-    <title>Student Plateformm</title>
+    <title>Student Plateform</title>
+
 </head>
+
 <body>
 
     <marquee> <h id ="welcomebar"> <font color ="yellow"> Welcome to Student_Plateform </font></h> </marquee>
 
     <div id = "mainbar">
         
-             <a href ="Enroll_Student.php"> Student Enroll </a>
+              <a href = "Enroll_Student.php"> Student Enroll </a> 
 
-             <a href ="studentReport.php"> Student Report </a>
+              <a href = "studentReport.php"> Student Report </a>
             
-            <a href ="">  Student Detail </a>         
-   
-   </div>
+              <a href = "MarkAttendance.php">  Attendance </a>
+
+              <a href =""> Mark Attendance </a> 
+            
+              <a href =""> Show attendance </a> 
+            
+    </div>
 
    <div id ="imgDiv">
 

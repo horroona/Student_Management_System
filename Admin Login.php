@@ -21,6 +21,8 @@
 
 	<?php
 
+	session_start();
+	
 	include 'dataBase.php';
 	
 			$usname_error = $pwd_error = '';

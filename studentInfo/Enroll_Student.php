@@ -171,7 +171,7 @@ if(isset($_POST['submit']))
             
         }
 
-        if($fname !='' && $lname !='' && $phoneNo != '' && $mail != '' && $address != '')
+        if($fname !='' && $lname !='' && $phoneNo !='' && $mail != '' && $address != '')
         {
             connectWithDB($fname, $lname, $address, $mail, $gender, $phoneNo);
 
