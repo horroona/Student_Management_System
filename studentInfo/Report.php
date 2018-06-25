@@ -16,9 +16,25 @@
     <script src="main.js"></script>
     
     <style>
+
+            #mainDiv{
+                color: lightblue;
+                text-align: center;
+                background: grey;
+                padding:20%;
+                padding-left: 10%;
+                padding-right: 10%;
+                height: 500px;
+
+            }
+
             #rpDiv{
+            
                 color: green;
                 text-align: center;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                background: #3c2222;
             }
 
     </style>
@@ -26,10 +42,16 @@
 
 <body>
     
-    <div id ='rpDiv'>
+    
+    <div id ='mainDiv'>
+
+            <h3>Student Report</h3>
+
+            <div id ='rpDiv'>
+
+            </div>
 
     </div>
-
     
     <?php
                 session_start();

@@ -89,7 +89,6 @@
                     $_SESSION['email'] = $row['Email'];
 
                     header('Location: Report.php');
-                    //showData($row['FirstName'], $row['LastName'], $row['Gender'], $row['Email']);            
                     exit;
                 }
             }
