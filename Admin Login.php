@@ -20,8 +20,9 @@
 	<body id = "body">
 
 	<?php
-
 	session_start();
+
+	$_SESSION['Admin'] = "AdminPage";
 	
 	include 'dataBase.php';
 	
@@ -57,11 +58,11 @@
 
 				if($usname && $pwd != '')
 				{
+			
 					$servername = 'localhost';
 					$username = 'root';
 					$password = '';
 					$dbname = 'root';
-			
 					contact($servername, $username, $password, $dbname, $usname, $pwd);
 
 				}
@@ -70,14 +71,14 @@
 	?>
 	
 		<div id ="div1">
+		
 		<img src="https://i.ytimg.com/vi/gGV0dpVpv8U/hqdefault.jpg" alt="not found" height ="70px" width ="120px" style = "padding: 5px;">
 		<form action="" method ="post">
-
-			<input type="text" name ="name" placeholder ="User ID" height ="20px">
+			<input type="text" name ="name" placeholder =" Admin ID" height ="20px">
 			<span id ="error1"> <?php echo $usname_error; ?> </span>
 			</br>
 			</br>
-			<input type="password" name ="password" placeholder ="password" height = "20px">
+			<input type="password" name ="password" placeholder =" password" height = "20px">
 			<span id ="error2"> <?php echo $pwd_error; ?> </span>
 			</br>
 			</br>

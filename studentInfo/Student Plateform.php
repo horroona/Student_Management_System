@@ -25,9 +25,7 @@
 
               <a href = "studentReport.php"> Student Report </a>
             
-              <a href = "MarkAttendance.php">  Attendance </a>
-
-              <a href =""> Mark Attendance </a> 
+              <a href ="MarkAttendance.php"> Mark Attendance </a> 
             
               <a href =""> Show attendance </a> 
             

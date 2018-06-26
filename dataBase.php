@@ -2,12 +2,11 @@
     
     function contact($servername, $username, $password, $dbname, $usname, $pwd){
 
-        $con = new mysqli($servername, $username, $password, $dbname);
+        $con =mysqli_connect($servername, $username, $password, $dbname);
 
-        if($con->connect_error){
+        if(!$con){
     
             die("connection failed " .$con->connect_error);
-    
         }
     
         else{

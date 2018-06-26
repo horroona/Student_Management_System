@@ -100,4 +100,44 @@
 
     }
 
+    function studentlogin($servername, $username, $password, $dbname, $email, $pwd)
+    {
+
+            $con = new mysqli($servername, $username, $password, $dbname);
+    
+            if($con->connect_error){
+        
+                die("connection failed " .$con->connect_error);
+        
+            }
+        
+            else{
+        
+                $err = true;
+        
+                $sql = "select *from studentinfo where Email = '$email'";
+        
+                $result = $con->query($sql);
+    
+    
+                if( ($row = $result->fetch_assoc())> 0 ){
+                        
+                       $err = false;
+                       header('Location:Student Plateform.php');
+                       exit;
+                        
+                }
+                        
+                elseif($err == true){
+
+                         echo("<h3 style ='text-align: center;'> <font color  = 'red' > Login Failed </font> </h3>");
+
+                }
+    
+                
+                }
+        
+    }
+    
+    
 ?>

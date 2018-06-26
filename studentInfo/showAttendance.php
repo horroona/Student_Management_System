@@ -147,7 +147,7 @@
             
             <form id ="form1" action = "" method ="POST">
                    
-                    <h>Mark_Attendance</h>
+                    <h>Show_Attendance</h>
 
                     <br>
                     <br>
@@ -159,21 +159,18 @@
                     <br>
 
                     Status: &nbsp
-                    
-                    <select id = "status" name = "status">
-
-                        <option> none </option>
-                        <option> P </option>
-                        <option> A </option>
-                        <option> L </option>
-                    
-                    </select>
                     <span id ="sp"> <?php echo $statuserror; ?></span>
-
+                    
                     <br>
                     <br>
 
-                    <input type="submit" id = "submit" name = "submit" value = "M @ R K">
+                    All &nbsp <input type="radio" id ="all" name = 'attendance' value = 'All' />
+                    Present &nbsp <input type="radio" id ="present" name = 'attendance' value = 'P' />
+                    Absent &nbsp <input type="radio" id ="all" name = 'attendance' value = 'A' />
+                    <br>
+                    <br>
+
+                    <input type="submit" id = "submit" name = "submit" value = "show">
     
             </form>
         
