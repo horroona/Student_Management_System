@@ -52,7 +52,7 @@
 
             else{
 
-                echo "<script> alert('Data already exist'); </script>";
+                echo "<script> alert('Data against this E-mail already exist'); </script>";
 
             }
        

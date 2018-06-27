@@ -115,7 +115,7 @@
                                     if($row['Date'] === $date && $row['ID'] === $email)
                                     {
                                         $check = false;
-                                        echo "<script> alert('You already marked attendance for today'); </script>";
+                                        echo "<script> alert('Attendance for this Id has already been marked for today'); </script>";
                                     }
 
                                     else{};
