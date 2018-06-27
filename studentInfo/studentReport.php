@@ -65,7 +65,6 @@
 
     <?php
     
-        include("ES_DB.php");
         $email = '';
         $emailError = '';
 
@@ -85,7 +84,10 @@
                 if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
                 {
 
-                    showReport($email);
+                    session_start();
+                    $_SESSION['email'] = $email;
+                    header("Location: Report.php");
+                    exit;
 
                 }         
                else{
@@ -108,6 +110,7 @@
 
             <input type ="text" id ="email" name ="email" placeholder = " Enter registered E-mail ">
             <span id ="sp"> <?php echo $emailError; ?></span>
+            
             <br>
             <br> 
 

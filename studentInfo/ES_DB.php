@@ -8,7 +8,7 @@
         $database = "student";
         $username = "root";
         $password = "";
-    
+        
 
         $con = mysqli_connect($server, $username, $password, $database);
 
@@ -61,38 +61,67 @@
 
     function showReport($email)
     {
-        include("Report.php");
 
         $server = "localhost";
         $database = "student";
         $username = "root";
         $password = "";
-    
+        
+        $present = 0;
+        $absent = 0;
+        $leaves = 0;
+
         $con = mysqli_connect($server, $username, $password, $database);
 
         $sql = "SELECT * FROM `studentinfo` WHERE Email = '$email'";
+        $sql2 = "SELECT *FROM `attendance` WHERE ID = '$email'";
 
-        $result = $con->query($sql);
+        $result2 = $con->query($sql2);
 
-        
-            if( ( mysqli_num_rows($result) ) > 0 )
+        if(!empty($result2))
+        {
+            while($tr = $result2->fetch_assoc() )
             {
-                //"FirstName: $row['FirstName']", "<br>LastName: $row['LastName']", "<br>Gender:  $row['Gender']", "<br>Email: $row['Email']"
-            
-                while( $row = $result->fetch_assoc() ){
-                    
-                    session_start();
-                    
-                    $_SESSION['fname'] = $row['FirstName'];
-                    $_SESSION['lname'] = $row['LastName'];
-                    $_SESSION['gender'] = $row['Gender'];
-                    $_SESSION['email'] = $row['Email'];
-
-                    header('Location: Report.php');
-                    exit;
+                if($tr['Status'] ==='P'){
+                   
+                    $present++;
+                }
+                
+                if($tr['Status'] ==='A'){
+                   
+                    $absent++;
+                }
+                if($tr['Status'] ==='L'){
+                   
+                    $leaves++;
                 }
             }
-            else
+        }
+        
+        $result = $con->query($sql);
+
+            if(!empty($result))
+            {
+
+                echo "<table>";
+                echo "<tbody>";
+                while( $row = $result->fetch_assoc() ){
+                    
+                    echo "<tr> <th>First Name: </th> <td>" .$row['FirstName'] . "</td> </tr>";
+                    echo "<tr> <th>Last Name: </th> <td>" .$row['LastName'] . "</td> </tr>";
+                    echo "<tr> <th>Email: </th> <td>" .$row['Email'] . "</td> </tr>";
+                    echo "<tr> <th>Gender: </th> <td>" .$row['Gender'] . "</td> </tr>";
+                    echo "<tr> <th>Presents: </th> <td>" .$present . "</td> </tr>";
+                    echo "<tr> <th>Absenties: </th> <td>" .$absent . "</td> </tr>";
+                    echo "<tr> <th>Leaves: </th> <td>" .$leaves . "</td> </tr>";
+                
+                }
+                
+                echo "</tbody>";
+                echo "</table>";
+            
+            }
+            elseif(empty($result))
             {
                 
                 echo "<h3  style ='text-align: center'> <font color ='red'> Email not exists </font></h3>";
