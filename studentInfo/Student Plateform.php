@@ -27,7 +27,7 @@
             
               <a href ="MarkAttendance.php"> Mark Attendance </a> 
             
-              <a href =""> Show attendance </a> 
+              <a href ="showAttendance.php"> Show attendance </a> 
             
     </div>
 
