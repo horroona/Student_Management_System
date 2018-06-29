@@ -73,20 +73,24 @@
             $day = date("l");
             $time = date('h:i:s A');
 
+            $Fdate = '';
+            $Tname = '';
+
+            $FTerror = '';
+
             if($_SERVER['REQUEST_METHOD'] == "POST")
             {
 
+                $Fdate = $_POST['Fdate'];
+                $Tdate = $_POST['Tdate'];
 
-/*                if(empty($_POST['email']))
+                if($Tdate < $Fdate)
                 {
-                    $emailerror = "* Email Required ";
+
+                    $FTerror = " *Please select date in order ";
+                
                 }
 
-                elseif(filter_var($email, FILTER_VALIDATE_EMAIL) ===false)
-                {
-                    $emailerror ="* Please Enter valid email";
-                }
-*/
                 if(!empty($_POST['attendance'])){
 
 
@@ -98,9 +102,9 @@
 
                     $email = $_POST['email'];
                 }
-                if(empty($_POST['attendance']) && empty($_POST['email'])){
+                if(empty($_POST['attendance']) && empty($_POST['email']) && empty($Fdate) && empty($Tdate) ){
 
-                    echo " <script> alert ('Please select radio button or enter email'); </script>";
+                    echo " <script> alert ('Please select radio button check by email OR select date'); </script>";
                 }
 
                 else{
@@ -115,12 +119,20 @@
 
                      $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date'";
                     
+                     if(empty($FTerror))
+                     {
+                        echo "FTerror is empty";
+                        $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date between '$Fdate' AND '$Tdate'";
+                     
+                     }
+
                     if(!empty($email))
                     {
                     
                         $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date' AND attendance.ID = '$email'";
                     
                     }
+
                     if($radioButtonValue === 'P'){
 
                         $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date' AND attendance.Status = 'P'";
@@ -129,8 +141,13 @@
 
                         $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date' AND attendance.Status = 'A'";
                     }
+                    if($radioButtonValue === 'L'){
+
+                        $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date' AND attendance.Status = 'L'";
+                    }
 
                      $result = $con->query($sql);
+                    
                      if(!$con)
                      {
                          die("Error in connection " .mysqli_connect_error());
@@ -140,18 +157,20 @@
                         {
 
                             if( !empty(mysqli_num_rows($result)))
-                            {    
+                            {
+                                $num = 1;    
                                 echo "<div id = 'echodiv'>";
-                                echo "<h3>Today's Attendance ('$date')</h3>";
                                 echo"<table style ='text-align: center; border: 2px solid;'>";
                                 echo "</tbody>";
+                                echo "<h3>Attendance_View on ('$date')</h3>";
                                 echo "<tr> <th> ID </th> <th> Stauts </th> <th> Day </th> <th> Time </th> <th> Date </th> <tr>";
                                 
                                 while($row = $result->fetch_assoc()){
                                     
                                     echo"<br>";
-                                    echo" <tr>" . "<td>" .$row['ID'] . "</td> <td>" .$row['Status'] ."</td> <td>" .$row['Day']. "</td> <td>" . $row['Time'] ."</td>  <td>" . $row['Date'] . "</td> </tr>";
-
+                                    echo" <tr> " . "  <td> $num-" .$row['ID'] . "</td> <td>" .$row['Status'] ."</td> <td>" .$row['Day']. "</td> <td>" . $row['Time'] ."</td>  <td>" . $row['Date'] . "</td> </tr>";
+                                    
+                                    $num++;
                                 }
                                 
                                 echo "</tbody>";
@@ -178,7 +197,7 @@
                     <br>
                     <br>
 
-                    <input type="text" id = "email" name = "email"  placeholder = " Your Email" />
+                    <input type="text" id = "email" name = "email"  placeholder = " check by Email" />
 
                     <br>
                     <br>
@@ -190,7 +209,18 @@
 
                     All &nbsp <input type="radio" id ="all" name = 'attendance' value = 'All' />
                     Present &nbsp <input type="radio" id ="present" name = 'attendance' value = 'P' />
-                    Absent &nbsp <input type="radio" id ="all" name = 'attendance' value = 'A' />
+                    Absent &nbsp <input type="radio" id ="absent" name = 'attendance' value = 'A' />
+                    Leaves &nbsp <input type="radio" id ="leave" name = 'attendance' value = 'L' />
+                    <br>
+                    <br>
+
+                    Select_Data: &nbsp<span id ="sp"><?php echo $FTerror;?></span>
+                   
+                    <br>
+                    <br>
+                   
+                    From:  &nbsp <input type="date" id = "date" name ="Fdate">  &nbsp &nbsp To: &nbsp <input type="date" id = "date" name ="Tdate">
+        
                     <br>
                     <br>
 
