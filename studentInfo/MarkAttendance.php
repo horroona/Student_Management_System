@@ -77,13 +77,40 @@
                 }
                 elseif(($_POST['status']) ==='L' && $sid != "AdminPage")
                 {
-                    echo "session ".$sid;
-                    echo "<script> alert('You would need to get permission from Admin '); </script>";
-                    if(empty($_SESSION['session']))
-                    {
-                        header('Location: studentLogin.php');
-                        exit;
-                    }
+                    
+                        $server = 'localhost';
+                        $username = 'root';
+                        $pwd = '';
+                        $dbname = 'root';
+                        
+                        $connect = mysqli_connect($server, $username, $pwd, $dbname);
+                        $connect2 = mysqli_connect('localhost', 'root', '', 'student');
+
+                        if($connect){
+                                
+                            $
+                                $sql = "INSERT INTO `notification`(`ID`, `Leaves`, `Date`, `Time`, `Status`) VALUES ('$email',2,'$date','$time', '')";
+                                $sql2 = "INSERT INTO `attendance`(`ID`, `Day`, `Time`, `Date`) VALUES ('$email','$day','$time', '$date')";
+                                $result=$connect->query($sql);
+                                $result2 = $connect2->query($sql2);
+                                if(!$result2)
+                                {
+                                    echo 'bad';
+                                }
+                                
+                                if($result){
+                                
+                                    echo '<script> alert("message sent to Admin"); </script>';
+                                
+                                }
+                                else{
+                                    echo '<script> alert("Error"); </script>';
+                                }
+                            }
+
+                        else{
+                            echo 'not connected database';
+                        }
                 }
 
                 else{

@@ -28,10 +28,10 @@
                     
                     {
                     
-                        if($pd == $row['password'])
+                        if($pd == $pwd)
                         {
                             $err = false;
-                            header('Location: studentInfo/Student Plateform.php');
+                            header('Location: Admin_Panel.php');
                             exit;
                     
                         }

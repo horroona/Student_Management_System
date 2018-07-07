@@ -35,13 +35,14 @@
         
         #echodiv{
 
-            padding-top: 20px;
             text-align: center;
             padding-left: 10%;
         }
 
         table{
             width: 88%;
+            position: relative;
+
         }
         
         th{
@@ -119,7 +120,7 @@
 
                      $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date = '$date'";
                     
-                     if(empty($FTerror))
+                     if(!empty($_POST['Fdate']))
                      {
                         echo "FTerror is empty";
                         $sql = "SELECT attendance.ID, attendance.Status, attendance.Day, attendance.Time, attendance.Date FROM attendance WHERE attendance.Date between '$Fdate' AND '$Tdate'";
@@ -162,7 +163,7 @@
                                 echo "<div id = 'echodiv'>";
                                 echo"<table style ='text-align: center; border: 2px solid;'>";
                                 echo "</tbody>";
-                                echo "<h3>Attendance_View on ('$date')</h3>";
+                                echo "<tr> <td colspan ='5'><h3>Attendance_View on ('$date')</h3> </td> </tr>";
                                 echo "<tr> <th> ID </th> <th> Stauts </th> <th> Day </th> <th> Time </th> <th> Date </th> <tr>";
                                 
                                 while($row = $result->fetch_assoc()){
@@ -202,7 +203,7 @@
                     <br>
                     <br>
 
-                    Status: &nbsp
+                    Status for today: &nbsp
                     
                     <br>
                     <br>
@@ -214,7 +215,7 @@
                     <br>
                     <br>
 
-                    Select_Data: &nbsp<span id ="sp"><?php echo $FTerror;?></span>
+                    Select_Date: &nbsp<span id ="sp"><?php echo $FTerror;?></span>
                    
                     <br>
                     <br>
